@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+
+        <!-- inherit form view -->
+        <record id="customer_form_view_inherit" model="ir.ui.view">
+            <field name="name">Customer form view inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+
+            <field name="arch" type="xml">
+
+                <xpath expr="//page[@name='sales_purchases']//group[@name='purchase']" position="after">
+                    <group string="Related Patient">
+                        <field name="related_patient_id"/>
+                    </group>
+                </xpath>
+<!--                vat-->
+                <xpath expr="//field[@name='vat']" position="attributes">
+                   <attribute name="required">True</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="customer_tree_view_inherit" model="ir.ui.view">
+            <field name="name">Customer tree view inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='phone']" position="after">
+                        <field name="website"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>
